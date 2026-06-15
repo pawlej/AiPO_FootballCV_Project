@@ -1,0 +1,16 @@
+outputs/*
+runs/*
+
+
+
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+.venv/
+venv/
+.env
+
+!content/.gitkeep
+!models/.gitkeep

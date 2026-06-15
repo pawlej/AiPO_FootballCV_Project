@@ -1,0 +1,12 @@
+# Przykładowa konfiguracja
+video_path: content/example_match.mp4
+model_path: models/best.pt
+output_dir: outputs
+confidence: 0.30
+batch_size: 20
+max_frames: null
+stride: 1
+use_stub: false
+stub_path: stubs/tracks.pkl
+enable_view_transform: false
+meter_scale: 0.01
