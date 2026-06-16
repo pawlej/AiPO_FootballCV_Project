@@ -148,8 +148,3 @@ python -m aipo_football_cv.cli run \
   --enable-view-transform
 ```
 
-Pipeline zakłada takie nazwy klas, bo tak działał pierwotny notebook. Jeśli Twój model ma inne nazwy klas, zmień mapowanie w `src/aipo_football_cv/tracker.py`.
-
-### Statystyki prędkości są dziwne
-
-Bez transformacji perspektywy prędkość jest przybliżeniem z pozycji pikselowych. Do sensowniejszych wartości w metrach włącz `--enable-view-transform` albo dostosuj `--meter-scale`.
