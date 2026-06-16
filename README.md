@@ -10,7 +10,6 @@ AiPO_FootballCV_Project/
 ├── stubs/                   # cache tracków ByteTrack/YOLO
 ├── configs/                 # przykładowa konfiguracja
 ├── notebooks/               # notebooki do inferencji/testów
-├── scripts/                 # przykładowe komendy dla Windows/Linux
 ├── main.py                  # główny launcher: python main.py run/infer
 └── src/aipo_football_cv/    # właściwy kod projektu
 ```
