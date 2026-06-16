@@ -1,5 +1,5 @@
 # AiPO projekt — Football Computer Vision lokalnie
-
+Autor projektu: Paweł Lejczak
 ## Struktura katalogów
 
 ```text
