@@ -1,7 +1,5 @@
 # AiPO projekt — Football Computer Vision lokalnie
 
-Ten projekt jest lokalną, uporządkowaną wersją notebooka Colab. Kod został rozdzielony na moduły, usunięto zależność od Google Drive/Colaba, a wczytywanie klatek przeniesiono na `supervision.get_video_frames_generator`, dzięki czemu łatwiej uruchamiać analizę na własnym komputerze.
-
 ## Struktura katalogów
 
 ```text
@@ -17,11 +15,11 @@ AiPO_FootballCV_Project/
 └── src/aipo_football_cv/    # właściwy kod projektu
 ```
 
-Foldery `content` i `models` są celowo puste. Dodaj tam własne pliki lokalnie.
+Do folderu `content` należy pobrać nagrania z: https://www.kaggle.com/competitions/dfl-bundesliga-data-shootout/data?select=clips
+Folder `models` zawier plik wyuczonego modelu YOLO `best.pt`. Dodaj tam własne modele.
 
 ## Instalacja
 
-Najwygodniej utworzyć osobne środowisko:
 
 ```bash
 python -m venv .venv
@@ -118,7 +116,7 @@ notebooks/model_inference_check.ipynb
 
 ## View transform / transformacja perspektywy
 
-Transformacja pozycji na współrzędne boiska jest opcjonalna. Oryginalny notebook korzystał z modelu Roboflow i pakietu `sports`, co wymaga API key. Domyślnie ta część jest wyłączona, żeby projekt działał lokalnie bez Colaba.
+Transformacja pozycji na współrzędne boiska jest opcjonalna. Oryginalny notebook korzystał z modelu Roboflow i pakietu `sports`, co wymaga API key. Domyślnie ta część jest wyłączona.
 
 Aby ją włączyć:
 
@@ -149,31 +147,6 @@ python -m aipo_football_cv.cli run \
   --model models/best.pt \
   --enable-view-transform
 ```
-
-## Co zostało poprawione względem notebooka
-
-1. Usunięto Colaba, Google Drive i komórki `pip install` z kodu wykonawczego.
-2. Zmieniono twarde ścieżki na argumenty CLI i lokalne foldery `content/`, `models/`, `outputs/`.
-3. Wczytywanie filmu przeniesiono na generator klatek z `supervision`.
-4. Kod rozdzielono na moduły: tracking, przypisanie drużyn, przypisanie piłki, statystyki, zapis wideo, inferencja modelu.
-5. Poprawiono niespójność `has ball` → `has_ball`.
-6. Dodano odporniejsze interpolowanie pozycji piłki z `ffill/bfill`.
-7. Dodano notebook do samej inferencji modelu i zapis wyników detekcji do CSV.
-8. Zmieniono opis projektu na `AiPO projekt`.
-
-## Typowe problemy
-
-### `ModuleNotFoundError: No module named 'aipo_football_cv'`
-
-Uruchom projekt po instalacji editable:
-
-```bash
-pip install -e .
-```
-
-albo uruchamiaj komendy z głównego katalogu projektu.
-
-### Model nie znajduje klas `player`, `goalkeeper`, `referee`, `ball`
 
 Pipeline zakłada takie nazwy klas, bo tak działał pierwotny notebook. Jeśli Twój model ma inne nazwy klas, zmień mapowanie w `src/aipo_football_cv/tracker.py`.
 
